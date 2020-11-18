@@ -8,7 +8,7 @@ namespace Task_6
 {
     class Program
     {
-        private static int CheckedSize(int value,string meaning)
+        private static int CheckedSize(int value, string meaning)
         {
             while (true)
             {
@@ -82,6 +82,10 @@ namespace Task_6
                 {
                     Console.WriteLine("Ви ввели некоректне значення!");
                 }
+                catch (OverflowException)
+                {
+                    Console.WriteLine("Ви ввели недопустиме для пошуку значення!");
+                }
             
             }
         }
@@ -90,7 +94,8 @@ namespace Task_6
         {
             for (int i = 0; i < arr.GetLength(1); ++i)
             {
-                int tempmin = int.MaxValue;
+                //int tempmin = int.MaxValue;
+                int tempmin = arr[0, i];
                 int posj = 0;
                 for (int j = 0; j < arr.GetLength(0); ++j)
                 {
@@ -100,7 +105,7 @@ namespace Task_6
                         posj = j;
                     }
                 }
-                Console.WriteLine($"В стовпці номер {i + 1} найменший: {tempmin}, Стовпець: {i} , Рядок: {posj}");  //індексація як програмісту, а не користувачу
+                Console.WriteLine($"В стовпці номер {i + 1} найменший: {tempmin}, Стовпець: {i+1} , Рядок: {posj+1}");
             }
         }
         static void Main(string[] args)
